@@ -1,5 +1,6 @@
 package org.example;
 
+//Comentario de prueba para el sistema de control de versiones
 import org.example.entity.Parqueadero;
 import org.example.entity.Usuario;
 import org.example.entity.Vehiculo;
