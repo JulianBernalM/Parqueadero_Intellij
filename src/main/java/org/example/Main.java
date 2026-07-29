@@ -152,9 +152,17 @@ public class Main {
         }
     }
 
+
     //Metodo para crear vehiculos
     public static void crearVehiculo(String placa, String tipo){
+
+        if (parqueaderoUno.existeVehiculo(placa)){
+            System.out.println("Ya existe un vehiculo con esta placa: " + placa);
+            return;
+        }
         Vehiculo vehiculo = new Vehiculo(placa, tipo);
         parqueaderoUno.agregaVehiculo(vehiculo);
+
+        System.out.println("Vehiculo ingresado correctamente. ");
     }
 }

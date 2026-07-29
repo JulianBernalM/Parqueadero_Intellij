@@ -106,6 +106,16 @@ public class Parqueadero {
 
     }
 
+    //Metodo que comprueba si la placa ingresada ya existe
+    public boolean existeVehiculo(String placa){
+        for (Vehiculo objetoVehiculo:listaVehiculos){
+            if (objetoVehiculo.getPlaca().equalsIgnoreCase(placa)){
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 
     public String getNombre() {
