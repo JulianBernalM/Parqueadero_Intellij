@@ -6,6 +6,8 @@ import java.util.List;
 //Importo estas clases para calcular los minutos
 import java.time.Duration;
 import java.time.LocalDateTime;
+//Importo DateTimeFormatter para dar un formato a la fecha y hora
+import java.time.format.DateTimeFormatter;
 
 public class Parqueadero {
 
@@ -38,19 +40,26 @@ public class Parqueadero {
     public void agregaVehiculo(Vehiculo vehiculo){ listaVehiculos.add(vehiculo);}
 
 
-    //Metodo para mostrar los vehiculos
     public void mostrarVehiculos(){
         if (listaVehiculos.isEmpty()){
             System.out.println("No hay vehiculos registrados en el parqueadero.");
             return;
         }
+
+        DateTimeFormatter formato =
+                DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        System.out.println("\n========== VEHÍCULOS REGISTRADOS ==========\n");
+
         for (Vehiculo objetoVehiculo:listaVehiculos){
-            System.out.println(objetoVehiculo.toString());
 
-            long valor = calcularValorAPagar(objetoVehiculo);
-            System.out.println("El valor a pagar actual es: " + valor);
+            System.out.println("-------------------------------------------");
+            System.out.println("Placa: " + objetoVehiculo.getPlaca());
+            System.out.println("Tipo de vehiculo: "+ objetoVehiculo.getTipo());
+            System.out.println("Hora de entrada: " + objetoVehiculo.getHoraEntrada().format(formato));
+            System.out.println("Tiempo parqueado: " + objetoVehiculo.calcularTiempoParqueado());
+            System.out.println("Valor a pagar: $" + calcularValorAPagar(objetoVehiculo));
+            System.out.println("-------------------------------------------");
         }
-
     }
 
 
@@ -98,13 +107,14 @@ public class Parqueadero {
     //Metodo para calcular el valor a pagar
     public long calcularValorAPagar(Vehiculo vehiculo){
 
-        long minutos = vehiculo.calcularMinutosParqueado();
+        long minutos = vehiculo.obtenerMinutosParqueado();
 
-        long horas = (long) Math.ceil(minutos / 60.0);
+        long horas = (long) Math.ceil(minutos / 60.0);//Redondea hacia arriba
 
-        return horas * 1000;
+        return horas * 1000; //Para obtener el valor en (miles)
 
     }
+
 
     //Metodo que comprueba si la placa ingresada ya existe
     public boolean existeVehiculo(String placa){
@@ -117,7 +127,7 @@ public class Parqueadero {
     }
 
 
-
+//Get y set
     public String getNombre() {
         return nombre;
     }

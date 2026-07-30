@@ -28,11 +28,10 @@ public class Vehiculo {
 
     @Override
     public String toString() {
-        return "Vehiculo{" +
+        return "Vehiculo " +
                 "placa=' " + placa + '\'' +
                 ", tipo='" + tipo + '\'' +
-                ", horaEntrada= " + horaEntrada +
-                '}';
+                ", horaEntrada= " + horaEntrada;
     }
 
     //Metodo para agregar usuarios al vehiculo
@@ -47,14 +46,27 @@ public class Vehiculo {
         }
     }
 
+
     //Metodo del vehiculo que calcula cuanto tiempo lleva parqueado
-    public long calcularMinutosParqueado(){
+    public String calcularTiempoParqueado(){
+        long minutos = Duration.between(
+                horaEntrada,
+                LocalDateTime.now()
+        ).toMinutes();
+
+        long horas = minutos/60;
+        long minutosRestantes = minutos % 60;
+
+        return horas + " horas y " + minutosRestantes + minutos;
+    }
+
+    //Metodo que devuelve los minutos parqueado
+    public long obtenerMinutosParqueado(){
         return Duration.between(
                 horaEntrada,
                 LocalDateTime.now()
         ).toMinutes();
     }
-
 
     public LocalDateTime getHoraEntrada() { return horaEntrada;}
 

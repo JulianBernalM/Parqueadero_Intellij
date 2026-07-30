@@ -28,8 +28,8 @@ public class Main {
             System.out.println("""
                     1. Registrar vehiculo
                     2. Mostrar vehiculos
-                    3. Buscar vehiculo (Placa) (Muestre la cantidad de minutos desde la hora de entrada y salida)
-                    4. Retirada de vehiculo (Ya sale del parqueadero --Sacar el carro del parqueadero, que muestre el valor a cancelar dependiendo de la hora de salida) El parqueadero cobra 500 pesos el minuto
+                    3. Buscar vehiculo (Placa)
+                    4. Retirada de vehiculo
                     5. Salir de la app                                        
                     """);
 
@@ -153,7 +153,7 @@ public class Main {
     }
 
 
-    //Metodo para crear vehiculos
+    //Metodo para registrar vehiculos
     public static void crearVehiculo(String placa, String tipo){
 
         if (parqueaderoUno.existeVehiculo(placa)){
