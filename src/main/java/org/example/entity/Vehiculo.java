@@ -57,7 +57,7 @@ public class Vehiculo {
         long horas = minutos/60;
         long minutosRestantes = minutos % 60;
 
-        return horas + " horas y " + minutosRestantes + minutos;
+        return horas + " horas y " + minutosRestantes + " minutos";
     }
 
     //Metodo que devuelve los minutos parqueado
